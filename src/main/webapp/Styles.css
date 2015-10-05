@@ -14,3 +14,42 @@ nav {
     border: 2px;
     float: right;
 }
+
+.nav li {
+  display: inline;
+}
+
+.nav a {
+  color: #5a5a5a;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+.container {
+    position: relative;
+    top: 10px;
+}
+
+.jumbotron {
+  height: 500px;
+  background-color:#ff3600;
+}
+
+.jumbotron .container {
+  position: relative;
+  top:100px;
+}
+
+.jumbotron h1 {
+  color: #000000;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  color: #000000;
+}
