@@ -4,7 +4,9 @@
     Author     : Kimberley
 --%>
 
+<%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,9 +15,11 @@
         <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
     <body>
+        <% LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");%>
         <header>
         <h1>InstaGrim ! </h1>
         <h2>Your world in Black and White</h2>
+        <h3>Welcome back <%out.println(lg.getUsername());%>!</h3>
         </header>
         <footer>
             <ul>
