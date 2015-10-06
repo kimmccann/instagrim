@@ -21,6 +21,7 @@
                     <li><a href="/Instagrim">Home</a></li>
                 </ul>
                 <ul class ="pull-right">
+                    <li><a href="register.jsp">Register</a></li>
                     <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
                 </ul>
             </div>
