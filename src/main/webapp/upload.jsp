@@ -11,31 +11,35 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     </head>
     <body>
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
-        <nav>
-            <ul>
-                <li class="nav"><a href="upload.jsp">Upload</a></li>
-                <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
-            </ul>
-        </nav>
+        <div class="nav">
+            <div class="container">
+                <ul class = "pull-left"> 
+                    <li><a href="/Instagrim">Home</a></li>
+                </ul>
+                <ul class ="pull-right">
+                    <li><a href="profile.jsp">Profile</a></li>
+                    <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Instagrim</h1>
+                <p>Your world in Black and White</p>
+             </div>
+        </div> 
  
         <article>
             <h3>File Upload</h3>
             <form method="POST" enctype="multipart/form-data" action="Image">
                 File to upload: <input type="file" name="upfile"><br/>
-
                 <br/>
                 <input type="submit" value="Press"> to upload the file!
             </form>
-
         </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
-            </ul>
-        </footer>
     </body>
 </html>
