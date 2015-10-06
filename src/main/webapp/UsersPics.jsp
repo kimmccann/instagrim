@@ -13,21 +13,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="/Instagrim/Styles.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     </head>
     <body>
-        <header>
+         <div class="nav">
+            <div class="container">
+                <ul class = "pull-left"> 
+                    <li><a href="/Instagrim">Home</a></li>
+                </ul>
+                <ul class ="pull-right">
+                    <li><a href="/Instagrim/upload.jsp">Upload</a></li>
+                    <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                </ul>
+            </div>
+        </div>
         
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
-        </header>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Instagrim</h1>
+                <p>Your world in Black and White</p>
+             </div>
+        </div> 
         
-        <nav>
-            <ul>
-                <li class="nav"><a href="/Instagrim/upload.jsp">Upload</a></li>
-                <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
-            </ul>
-        </nav>
- 
         <article>
             <h1>Your Pics</h1>
         <%
@@ -49,10 +56,5 @@
             }
         %>
         </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
-            </ul>
-        </footer>
     </body>
 </html>
