@@ -13,18 +13,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     </head>
     <body>
         <% LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");%>
-        <header>
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
-        <h3>Welcome back <%out.println(lg.getUsername());%>!</h3>
-        </header>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
-            </ul>
-        </footer>
+        <div class="nav">
+            <div class="container">
+                <ul class = "pull-left"> 
+                    <li><a href="/Instagrim">Home</a></li>
+                </ul>
+                <ul class ="pull-right">
+                    <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
+                    <li><a href="upload.jsp">Upload</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Instagrim</h1>
+                <p>Your world in Black and White</p>
+                <p>Welcome back <%out.println(lg.getUsername());%>!</p>
+        </div>
     </body>
 </html>
