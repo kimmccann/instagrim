@@ -69,19 +69,36 @@ public class User {
             return false;
         } else {
             for (Row row : rs) {
-               
                 String StoredPass = row.getString("password");
                 if (StoredPass.compareTo(EncodedPassword) == 0)
                     return true;
             }
-        }
-   
-    
+        }    
     return false;  
     }
-       public void setCluster(Cluster cluster) {
+    
+    public void setCluster(Cluster cluster) {
         this.cluster = cluster;
     }
 
+    //This method checks if the username is already taken
+    public boolean isValidUsername(String username){
+        Session session = cluster.connect("instagrim");
+        PreparedStatement ps = session.prepare("select login from userprofiles where login =?");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute(boundStatement.bind(username));
+        if (rs.isExhausted()){
+            System.out.println("No users returned");
+            return false;
+        } else {
+            for (Row row : rs) {
+                String StoredUser = row.getString("login");
+                if (StoredUser.compareTo(username) == 0)
+                    return true;
+            }
+        }
+        return false;
+    }
     
 }
