@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
-        <link rel="stylesheet" type="text/css" href="Styles.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
     <body>
         <div class="nav">
@@ -38,13 +38,14 @@
                 <ul>
                     <li>First Name <input type="text" name="firstname"></li>
                     <li>Surname <input type="text" name="surname"></li>
+                    <li>Email Address <input type="email" name="email address"></li>
                     <li>User Name <input type="text" name="username"></li>
                     <li>Password <input type="password" name="password"></li>
-                    <li>Email Address <input type="email" name="email address"></li>
                 </ul>
                 <br/>
                 <input type="submit" value="Register"> 
             </form>
         </article>
+        
     </body>
 </html>
