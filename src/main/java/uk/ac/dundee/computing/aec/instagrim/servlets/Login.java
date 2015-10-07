@@ -61,12 +61,11 @@ public class Login extends HttpServlet {
             lg.setLogedin();
             lg.setUsername(username);
             //request.setAttribute("LoggedIn", lg);
-            
             session.setAttribute("LoggedIn", lg);
             System.out.println("Session in servlet "+session);
             RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 	    rd.forward(request,response);
-            
+            response.sendRedirect("/Instagrim/profile.jsp");
         }else{
             response.sendRedirect("/Instagrim/login.jsp");
         }
