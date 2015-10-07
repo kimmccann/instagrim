@@ -52,10 +52,14 @@ public class Register extends HttpServlet {
         String email=request.getParameter("email");
         
         User us=new User();
-        us.setCluster(cluster);
-        us.RegisterUser(firstname, surname, username, password, email);
-        
-	response.sendRedirect("/Instagrim");
+        us.setCluster(cluster);        
+        if (us.isValidUsername(username) == true ){
+            System.out.println("This username is already taken");
+            response.sendRedirect("/Instagrim/register.jsp");
+        } else {
+            us.RegisterUser(firstname, surname, username, password, email);
+            response.sendRedirect("/Instagrim");
+        }
         
     }
 
