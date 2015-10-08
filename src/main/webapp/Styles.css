@@ -53,3 +53,49 @@ nav {
   font-size: 20px;
   color: #000000;
 }
+
+.logo {
+  padding: 20px;
+  font-size: 27px;
+  color: #aaaaaa;
+  font-weight: bold;
+}
+
+.login {
+    margin: 20px auto;
+    width: 300px;
+}
+
+.login-box{
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.input-spacing {
+    margin-bottom: 10px;
+}
+
+input {
+    text-align: center;
+    background-color: #ECF0F1;
+    border: 2px transparent;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: 200;
+    padding: 10px;
+    width: 250px;
+}
+
+.btn {
+  border: 2px transparent;
+  background: #3498DB;
+  font-size: 17px;
+  line-height: 25px;
+  padding: 10px;
+  border-radius: 4px;
+  transition: 0.25s;
+  width: 250px;
+}
+    
