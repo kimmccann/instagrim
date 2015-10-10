@@ -34,8 +34,8 @@
              </div>
         </div>     
         
-	<div class="login">
-            <div class="login-box">
+	<div class="form">
+            <div class="form-box">
                 <div class="logo">Login</div>
                 <form method="POST" action="Login">
                     <div class="input-spacing">
