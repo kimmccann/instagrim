@@ -32,20 +32,29 @@
              </div>
         </div> 
        
-        <article>
-            <h3>Register as user</h3>
-            <form method="POST"  action="Register">
-                <ul>
-                    <li>First Name <input type="text" name="firstname"></li>
-                    <li>Surname <input type="text" name="surname"></li>
-                    <li>Email Address <input type="email" name="email address"></li>
-                    <li>User Name <input type="text" name="username"></li>
-                    <li>Password <input type="password" name="password"></li>
-                </ul>
-                <br/>
-                <input type="submit" value="Register"> 
-            </form>
-        </article>
+        <div class="form">
+            <div class="form-box">
+                <div class="logo">Register as user</div>
+                <form method="POST"  action="Register">
+                    <div class="input-spacing">
+                        <input type="text" name="firstname" placeholder="First name">
+                    </div>
+                    <div class="input-spacing">
+                        <input type="text" name="surname" placeholder="Surname">
+                    </div>
+                    <div class="input-spacing">
+                        <input type="email" name="email address" placeholder="Email Address">
+                    </div>
+                    <div class="input-spacing">
+                        <input type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="input-spacing">
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Register" class="btn btn-primary btn-large">
+                </form>
+            </div>
+        </div>
         
     </body>
 </html>
