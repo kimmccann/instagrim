@@ -8,7 +8,6 @@ package uk.ac.dundee.computing.aec.instagrim.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -19,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.models.User;
 
+
 /**
  *
  * @author Administrator
@@ -28,6 +28,7 @@ public class Register extends HttpServlet {
     Cluster cluster=null;
     public void init(ServletConfig config) throws ServletException {
         // TODO Auto-generated method stub
+        super.init(config);
         cluster = CassandraHosts.getCluster();
     }
 
@@ -53,12 +54,15 @@ public class Register extends HttpServlet {
         
         User us=new User();
         us.setCluster(cluster);        
+        //Checks if the username is already taken and if it is then refresh the registration page to try again
         if (us.isValidUsername(username) == true ){
             System.out.println("This username is already taken");
             response.sendRedirect("/Instagrim/register.jsp");
         } else {
             us.RegisterUser(firstname, surname, username, password, email);
-            response.sendRedirect("/Instagrim");
+            //Automatic login
+            RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/Login");
+            rd.forward(request, response);
         }
         
     }
