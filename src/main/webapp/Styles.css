@@ -8,6 +8,9 @@ and open the template in the editor.
     Author     : Administrator
 */
 
+body { 
+    padding-top: 30px;
+}
 
 nav {
     text-align: left;
@@ -25,6 +28,15 @@ nav {
   font-weight: bold;
   padding: 14px 10px;
   text-transform: uppercase;
+}
+
+.navbar-nav > li > a {
+    padding-top:5px; 
+    padding-bottom:5px;
+}
+
+.navbar {
+    min-height:30px;
 }
 
 .container {
