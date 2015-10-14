@@ -65,6 +65,12 @@
                         <input type="text" name="surname" placeholder="Surname">
                     </div>
                     <div class="input-spacing">
+                        <input type="text" name="date of birth" placeholder="Date of Birth">
+                    </div>
+                    <div class="input-spacing">
+                        <input type="text" name="gender" placeholder="Gender">
+                    </div>
+                    <div class="input-spacing">
                         <input type="email" name="email address" placeholder="Email Address">
                     </div>
                     <div class="input-spacing">
