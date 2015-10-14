@@ -38,7 +38,7 @@ public class Logout extends HttpServlet{
          System.out.println("Session in servlet "+session);
          System.out.println("user logged out");
          //Forwards to homepage
-         response.sendRedirect("/Instagrim");
+         response.sendRedirect("/Instagrim/index.jsp");
      }
      
     
