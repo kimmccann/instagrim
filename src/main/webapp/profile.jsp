@@ -14,7 +14,7 @@
         
         <!-- CSS Stylesheets for bootstrap and custom made one -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="Styles.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Stylesheets/Styles.css" />
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -55,6 +55,27 @@
                 <h1>Instagrim</h1>
                 <p>Your world in Black and White</p>
                 <p>Welcome back <%out.println(lg.getUsername());%>!</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h1>Your Pics</h1>
+            <%
+                java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
+                if (lsPics == null) {
+            %>
+            <p>No Pictures found</p>
+            <%
+            } else {
+                Iterator<Pic> iterator;
+                iterator = lsPics.iterator();
+                while (iterator.hasNext()) {
+                    Pic p = (Pic) iterator.next();
+            %>
+            <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
+                }
+                }
+            %>
         </div>
     </body>
 </html>
