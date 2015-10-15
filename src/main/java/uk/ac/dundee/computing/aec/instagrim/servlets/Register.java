@@ -48,6 +48,8 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         String firstname=request.getParameter("firstname");
         String surname=request.getParameter("surname");
+        String dob=request.getParameter("dob");
+        String gender=request.getParameter("gender");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String email=request.getParameter("email");
@@ -59,7 +61,7 @@ public class Register extends HttpServlet {
             System.out.println("This username is already taken");
             response.sendRedirect("/Instagrim/register.jsp");
         } else {
-            us.RegisterUser(firstname, surname, username, password, email);
+            us.RegisterUser(firstname, surname, dob, gender, username, password, email);
             //Automatic login
             RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/Login");
             rd.forward(request, response);
