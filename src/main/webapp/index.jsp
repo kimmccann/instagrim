@@ -14,7 +14,7 @@
         
         <!-- CSS Stylesheets for bootstrap and custom made one -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="Styles.css" />
+        <link rel="stylesheet" type="text/css" href="/Instagrim/Stylesheets/Styles.css" />
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -44,15 +44,14 @@
                     <ul class ="nav navbar-nav navbar-right">
                         <li><a href="upload.jsp">Upload</a></li>
                             <%
-
                                 LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
                                 if (lg != null) {
                                     String UserName = lg.getUsername();
                                     if (lg.getlogedin()) {
                             %>
 
-                        <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
-                        <li><a href="profile.jsp">Profile</a></li>
+                      <!--  <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li> -->
+                        <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Profile</a></li>
                         <li><a href="Logout">Logout</a></li>
                             <%}
                                     }else{
@@ -60,8 +59,6 @@
                         <li><a href="register.jsp">Register</a></li>
                         <li><a href="login.jsp">Login</a></li>
                         <%
-
-
                             }%>
                     </ul>
                 </div>
