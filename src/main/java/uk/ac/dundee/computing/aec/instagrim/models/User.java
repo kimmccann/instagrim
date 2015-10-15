@@ -101,4 +101,24 @@ public class User {
         return false;
     }
     
+    //This method checks if this email address has already been used to stop people setting up duplicate accounts
+    public boolean isValidEmail(String email){
+        Session session = cluster.connect("instagrim");
+        PreparedStatement ps = session.prepare("select email from userprofiles where login =?");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute(boundStatement.bind(email));
+        if (rs.isExhausted()){
+            System.out.println("No users returned");
+            return false;
+        } else {
+            for (Row row : rs) {
+                String StoredUser = row.getString("login");
+                if (StoredUser.compareTo(email) == 0)
+                    return true;
+            }
+        }
+        return false;
+    }
+    
 }
