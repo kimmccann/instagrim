@@ -110,4 +110,11 @@ input {
   transition: 0.25s;
   width: 250px;
 }
+
+.image-spacing{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    pagging-right: 5px;
+}
     
