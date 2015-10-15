@@ -14,7 +14,7 @@
         
         <!-- CSS Stylesheets for bootstrap and custom made one -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="Styles.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Stylesheets/Styles.css" />
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -70,10 +70,8 @@
             iterator = lsPics.iterator();
             while (iterator.hasNext()) {
                 Pic p = (Pic) iterator.next();
-
         %>
         <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
-
             }
             }
         %>
