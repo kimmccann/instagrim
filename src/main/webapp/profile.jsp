@@ -59,6 +59,7 @@
         </div>
         
         <div class="container">
+            
             <h1>Your Pics</h1>
             <%
                 java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
@@ -72,7 +73,9 @@
                 while (iterator.hasNext()) {
                     Pic p = (Pic) iterator.next();
             %>
-            <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
+                <div class="image-spacing">
+                    <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/>
+                </div><%
                 }
                 }
             %>
