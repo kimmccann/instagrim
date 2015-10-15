@@ -50,7 +50,6 @@ public final class Keyspaces {
                     + "      date_of_birth text, \n"
                     + "      gender text, \n"
                     + "      addresses  map<text, frozen <address>>\n"
-                    + "      displaypic uuid, \n"
                     + "  );";
             Session session = c.connect();
             try {
