@@ -27,22 +27,21 @@ public class User {
         
     }
     
-    public boolean RegisterUser(String firstName, String secondName, String dateOfBirth, String gender, String username, String Password, String email){
+    public boolean RegisterUser(String username, String password, String firstName, String surname, String email, String dateOfBirth, String gender){
         AeSimpleSHA1 sha1handler=  new AeSimpleSHA1();
         String EncodedPassword=null;
         try {
-            EncodedPassword= sha1handler.SHA1(Password);
+            EncodedPassword= sha1handler.SHA1(password);
         }catch (UnsupportedEncodingException | NoSuchAlgorithmException et){
             System.out.println("Can't check your password");
             return false;
         }
         Session session = cluster.connect("instagrim");
-        PreparedStatement ps = session.prepare("insert into userprofiles (login,password) Values(?,?)");
-       
+        PreparedStatement ps = session.prepare("insert into userprofiles (login,password, first_name, last_name, email, date_of_birth, gender) Values(?,?,?,?,?,?,?)");
         BoundStatement boundStatement = new BoundStatement(ps);
         session.execute( // this is where the query is executed
                 boundStatement.bind( // here you are binding the 'boundStatement'
-                        username,EncodedPassword));
+                        username,EncodedPassword,firstName,surname,email,dateOfBirth,gender));
         //We are assuming this always works.  Also a transaction would be good here !
         
         return true;
@@ -113,7 +112,7 @@ public class User {
             return false;
         } else {
             for (Row row : rs) {
-                String StoredUser = row.getString("login");
+                String StoredUser = row.getString("email");
                 if (StoredUser.compareTo(email) == 0)
                     return true;
             }
