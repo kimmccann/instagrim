@@ -120,4 +120,31 @@ public class User {
         return false;
     }
     
+    //Setting up a user profile by retrieving info from database
+    public Profile getProfile(){
+        Profile user = new Profile();
+        Session session = cluster.connect("instagrim");
+        PreparedStatement ps = session.prepare("select * from userprofiles where login =?");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute(boundStatement.bind());
+        if (rs.isExhausted()){
+            System.out.println("No users returned");
+        } else {
+            for (Row row : rs) {
+                String fname = row.getString("first_name");
+                String sname = row.getString("last_name");
+                String email = row.getString("email");
+                String dob = row.getString("date_of_birth");
+                String gender = row.getString("gender");
+                user.setFirstName(fname);
+                user.setSecondName(sname);
+                user.setEmail(email);
+                user.setDateOfBirth(dob);
+                user.setGender(gender);
+            }
+        }
+        return user;
+    }
+    
 }
