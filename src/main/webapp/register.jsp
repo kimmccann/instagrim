@@ -71,7 +71,7 @@
                         <input type="text" name="gender" placeholder="Gender">
                     </div>
                     <div class="input-spacing">
-                        <input type="email" name="email address" placeholder="Email Address">
+                        <input type="email" name="email" placeholder="Email Address">
                     </div>
                     <div class="input-spacing">
                         <input type="text" name="username" placeholder="Username">
