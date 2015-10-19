@@ -44,7 +44,7 @@
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
                         <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
-                        <li><a href="upload.jsp">Upload</a></li>
+                        <li><a href="/Instagrim/upload.jsp">Upload</a></li>
                     </ul>
                 </div>
             </div>
