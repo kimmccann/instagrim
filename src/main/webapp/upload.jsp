@@ -3,8 +3,9 @@
     Created on : Sep 22, 2014, 6:31:50 PM
     Author     : Administrator
 --%>
-
+<!--imports-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +41,10 @@
                         <li><a href="/Instagrim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="profile.jsp">Profile</a></li>
+                        <%
+                                LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+                        %>
+                        <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Profile</a></li>
                         <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
                     </ul>
                 </div>
