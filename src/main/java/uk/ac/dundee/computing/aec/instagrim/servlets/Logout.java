@@ -34,7 +34,7 @@ public class Logout extends HttpServlet{
          LoggedIn lg= new LoggedIn();
          //Sets logedin = false
          lg.setLogedout();
-         session.setAttribute("LoggedIn", lg);
+         session.setAttribute("LoggedIn", null);
          System.out.println("Session in servlet "+session);
          System.out.println("user logged out");
          //Forwards to homepage
