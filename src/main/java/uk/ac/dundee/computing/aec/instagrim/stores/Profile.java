@@ -67,11 +67,4 @@ public class Profile {
         return profilePicture;
     }
     
-    public void setBiography(String bio){
-        this.biography=bio;
-    }
-    
-    public String getBiography(){
-        return biography;
-    }
 }
