@@ -3,10 +3,11 @@
     Created on : 01-Oct-2015, 21:01:14
     Author     : Kimberley
 --%>
-
+<!--imports-->
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
+<%@ page import="uk.ac.dundee.computing.aec.instagrim.models.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +24,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <% LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");%>
+        <% LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+           Profile user = (Profile) session.getAttribute("Profile");%>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Responsive navbar with toggle navigation -->
@@ -54,7 +56,7 @@
             <div class="container">
                 <h1>Instagrim</h1>
                 <p>Your world in Black and White</p>
-                <p>Welcome back <%out.println(lg.getUsername());%>!</p>
+                <p>Welcome back <%out.println(user.getFirstName() + " " + user.getSecondName());%>!</p>
             </div>
         </div>
         
