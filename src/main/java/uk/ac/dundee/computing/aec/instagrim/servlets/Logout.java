@@ -31,9 +31,6 @@ public class Logout extends HttpServlet{
             throws ServletException, IOException {
          //Gets current session
          HttpSession session=request.getSession();
-         LoggedIn lg= new LoggedIn();
-         //Sets logedin = false
-         lg.setLogedout();
          session.setAttribute("LoggedIn", null);
          System.out.println("Session in servlet "+session);
          System.out.println("user logged out");
