@@ -7,6 +7,7 @@ package uk.ac.dundee.computing.aec.instagrim.stores;
 
 import com.datastax.driver.core.utils.Bytes;
 import java.nio.ByteBuffer;
+import java.util.UUID;
 
 /**
  *
@@ -25,6 +26,11 @@ public class Pic {
     public void setUUID(java.util.UUID UUID){
         this.UUID =UUID;
     }
+    
+    public UUID getUUID(){
+        return UUID;
+    }
+    
     public String getSUUID(){
         return UUID.toString();
     }
