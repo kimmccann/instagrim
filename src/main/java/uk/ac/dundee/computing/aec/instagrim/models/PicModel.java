@@ -88,7 +88,7 @@ public class PicModel {
     }
     
     //Method to insert a display picture into the userprofile table.
-    public void insertDisplayPic(byte[] b, String type, String name, String user) {
+    public Pic insertDisplayPic(byte[] b, String type, String name, String user, Pic profilePicture) {
         try {
             Convertors convertor = new Convertors();
 
@@ -120,10 +120,14 @@ public class PicModel {
             session.execute(bsInsertPic.bind(picid, buffer, thumbbuf,processedbuf, user, DateAdded, length,thumblength,processedlength, type, name));
             session.execute(bsInsertDisplayPic.bind(picid, user));
             session.close();
+            
+            profilePicture.setPic(buffer, length, type);
+            profilePicture.setUUID(picid);
 
         } catch (IOException ex) {
             System.out.println("Error --> " + ex);
         }
+        return profilePicture;
     }
 
     public byte[] picresize(String picid,String type) {
