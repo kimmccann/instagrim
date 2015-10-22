@@ -54,18 +54,22 @@ public class Register extends HttpServlet {
         String dob=request.getParameter("date of birth");
         String gender=request.getParameter("gender");
         
-        User us=new User();
-        us.setCluster(cluster);        
-        //Checks if the username is already taken and if it is then refresh the registration page to try again
-        if (us.isValidUsername(username) == true ){
-            System.out.println("This username is already taken");
+        if (firstname.isEmpty() || surname.isEmpty() || username.isEmpty() || password.isEmpty() || email.isEmpty() || dob.isEmpty() || gender.isEmpty()){
             response.sendRedirect("/Instagrim/register.jsp");
         } else {
-            us.RegisterUser(username, password, firstname, surname, email,dob,gender);
-            //Automatic login
-         //   RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/Login");
-           // rd.forward(request, response);
-            response.sendRedirect("/Instagrim/index.jsp");
+            User us=new User();
+            us.setCluster(cluster);        
+            //Checks if the username is already taken and if it is then refresh the registration page to try again
+            if (us.isValidUsername(username) == true ){
+                System.out.println("This username is already taken");
+                response.sendRedirect("/Instagrim/register.jsp");
+            } else {
+                us.RegisterUser(username, password, firstname, surname, email,dob,gender);
+                //Automatic login
+             //   RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/Login");
+               // rd.forward(request, response);
+                response.sendRedirect("/Instagrim/index.jsp");
+            }
         }
         
     }
