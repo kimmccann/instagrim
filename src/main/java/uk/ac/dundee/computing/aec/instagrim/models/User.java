@@ -139,17 +139,20 @@ public class User {
                 String email = row.getString("email");
                 String dob = row.getString("date_of_birth");
                 String gender = row.getString("gender");
+                UUID profilePic = row.getUUID("profilePicture");
                 p.setFirstName(fname);
                 p.setSecondName(sname);
-                p.setEmail(email);
+                p.setEmail(email); 
                 p.setDateOfBirth(dob);
                 p.setGender(gender);
+                p.setProfilePicture(profilePic);
             }
         }
         return p;
     }
     
     //Setting a user profile picture by retrieving info from database
+    /**
     public Profile getProfilePicture(Profile p, String username){
         Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select * from userdisplaypic where username=?");
@@ -167,5 +170,5 @@ public class User {
         }
         return p;
     }
-    
+    **/
 }
