@@ -54,6 +54,7 @@ public class Register extends HttpServlet {
         String dob=request.getParameter("date of birth");
         String gender=request.getParameter("gender");
         
+        //Stops crashing if fields are empty
         if (firstname.isEmpty() || surname.isEmpty() || username.isEmpty() || password.isEmpty() || email.isEmpty() || dob.isEmpty() || gender.isEmpty()){
             response.sendRedirect("/Instagrim/register.jsp");
         } else {
