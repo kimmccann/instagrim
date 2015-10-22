@@ -50,6 +50,13 @@ public final class Keyspaces {
                     + "      date_of_birth text,\n"
                     + "      gender text,\n"
                     + "  );";
+            //Create a table to save the users display picture
+            String CreateUserDisplayPic = "CREATE TABLE if not exists instagrim.userdisplaypic (\n"
+                    + "     picid uuid,\n"
+                    + "     user varchar,\n"
+                    + "     pic_added timestamp,\n"
+                    + "     PRIMARY KEY (user, picid)"
+                    +")";
             Session session = c.connect();
             try {
                 PreparedStatement statement = session
