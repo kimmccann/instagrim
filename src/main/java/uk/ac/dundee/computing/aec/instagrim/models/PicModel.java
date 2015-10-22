@@ -87,7 +87,7 @@ public class PicModel {
         }
     }
     
-    //Method to insert a display picture into the userdisplaypic table.
+    //Method to insert a display picture into the userprofile table.
     public void insertDisplayPic(byte[] b, String type, String name, String user) {
         try {
             Convertors convertor = new Convertors();
@@ -112,13 +112,13 @@ public class PicModel {
             Session session = cluster.connect("instagrim");
 
             PreparedStatement psInsertPic = session.prepare("insert into pics ( picid, image,thumb,processed, user, interaction_time,imagelength,thumblength,processedlength,type,name) values(?,?,?,?,?,?,?,?,?,?,?)");
-            PreparedStatement psInsertPicToUser = session.prepare("insert into userdisplaypic ( picid, user, pic_added) values(?,?,?)");
+            PreparedStatement psInsertDisplayPic = session.prepare("update userprofiles set profilePicture=? where login=?");
             BoundStatement bsInsertPic = new BoundStatement(psInsertPic);
-            BoundStatement bsInsertPicToUser = new BoundStatement(psInsertPicToUser);
+            BoundStatement bsInsertDisplayPic = new BoundStatement(psInsertDisplayPic);
 
             Date DateAdded = new Date();
             session.execute(bsInsertPic.bind(picid, buffer, thumbbuf,processedbuf, user, DateAdded, length,thumblength,processedlength, type, name));
-            session.execute(bsInsertPicToUser.bind(picid, user, DateAdded));
+            session.execute(bsInsertDisplayPic.bind(picid, user));
             session.close();
 
         } catch (IOException ex) {
