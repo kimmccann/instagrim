@@ -17,7 +17,6 @@ public class Profile {
     String dateOfBirth = null;
     String gender = null;
     UUID profilePicture = null;
-    String biography = null;
     
     public void setFirstName (String fname){
         this.firstName=fname;
