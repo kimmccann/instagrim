@@ -15,6 +15,7 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 import uk.ac.dundee.computing.aec.instagrim.lib.AeSimpleSHA1;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 
@@ -143,6 +144,25 @@ public class User {
                 p.setEmail(email);
                 p.setDateOfBirth(dob);
                 p.setGender(gender);
+            }
+        }
+        return p;
+    }
+    
+    //Setting a user profile picture by retrieving info from database
+    public Profile getProfilePicture(Profile p, String username){
+        Session session = cluster.connect("instagrim");
+        PreparedStatement ps = session.prepare("select * from userdisplaypic where username=?");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute(boundStatement.bind(username));
+        if (rs.isExhausted()){
+            System.out.println("No profile pic returned");   
+        }else{
+            for (Row row : rs){
+                System.out.println("Profile picture found");
+                java.util.UUID profilePic = row.getUUID("picid");
+                p.setProfilePicture(profilePic);
             }
         }
         return p;
