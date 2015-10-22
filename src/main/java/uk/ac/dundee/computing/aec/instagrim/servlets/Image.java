@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -27,6 +28,7 @@ import uk.ac.dundee.computing.aec.instagrim.lib.Convertors;
 import uk.ac.dundee.computing.aec.instagrim.models.PicModel;
 import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
+import uk.ac.dundee.computing.aec.instagrim.stores.Profile;
 
 /**
  * Servlet implementation class Image
@@ -132,6 +134,7 @@ public class Image extends HttpServlet {
 
             String type = part.getContentType();
             String filename = part.getSubmittedFileName();
+            String checkboxValue = request.getParameter("profilePicCheck");
             
             InputStream is = request.getPart(part.getName()).getInputStream();
             int i = is.available();
@@ -147,8 +150,18 @@ public class Image extends HttpServlet {
                 System.out.println("Length : " + b.length);
                 PicModel tm = new PicModel();
                 tm.setCluster(cluster);
-                tm.insertPic(b, type, filename, username);
-
+                //If box checked then the picture is to be uploaded as a profile picture
+                if(checkboxValue == "profilePic"){
+                    Pic profilePicture = new Pic();
+                    profilePicture = tm.insertDisplayPic(b, type, type, username, profilePicture);
+                    UUID picId = profilePicture.getUUID();
+                    Profile user = (Profile) session.getAttribute("Profile");            
+                    user.setProfilePicture(picId);
+                    System.out.println("Profile picture has been uploaded, hopefully");
+                }else{
+                    //else just insert it into the regular picture table
+                    tm.insertPic(b, type, filename, username);
+                }
                 is.close();
             }
             RequestDispatcher rd = request.getRequestDispatcher("/upload.jsp");
