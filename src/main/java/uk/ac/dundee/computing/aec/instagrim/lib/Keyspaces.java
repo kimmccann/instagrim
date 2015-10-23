@@ -51,7 +51,7 @@ public final class Keyspaces {
                     + "      gender text,\n"
                     +"       profilePicture UUID, \n"
                     + "  );";
-            String CreateCommentTable = "CREATE TABLE if not exists insragrim.comment table (\n"
+            String CreateCommentTable = "CREATE TABLE if not exists instagrim.comments (\n"
                     + "     user varchar,\n"
                     + "     picid UUID,\n"
                     + "     pic_added timestamp,\n"
