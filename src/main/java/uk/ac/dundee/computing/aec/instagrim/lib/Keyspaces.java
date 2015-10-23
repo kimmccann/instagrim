@@ -51,6 +51,13 @@ public final class Keyspaces {
                     + "      gender text,\n"
                     +"       profilePicture UUID, \n"
                     + "  );";
+            String CreateCommentTable = "CREATE TABLE if not exists insragrim.comment table (\n"
+                    + "     user varchar,\n"
+                    + "     picid UUID,\n"
+                    + "     pic_added timestamp,\n"
+                    + "     comments varchar,\n"
+                    + "     PRIMARY KEY (picid, pic_added)\n"
+                    + " ) WITH CLUSTERING ORDER BY (pic_added desc);";
             Session session = c.connect();
             try {
                 PreparedStatement statement = session
@@ -94,6 +101,13 @@ public final class Keyspaces {
                 session.execute(cqlQuery);
             } catch (Exception et) {
                 System.out.println("Can't create Address Profile " + et);
+            }
+            System.out.println("" + CreateCommentTable);
+            try{
+                SimpleStatement cqlQuery = new SimpleStatement(CreateCommentTable);
+                session.execute(cqlQuery);
+            } catch (Exception et){
+                System.out.println("Can't create comment table " + et);
             }
             session.close();
 
