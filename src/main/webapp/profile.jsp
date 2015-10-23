@@ -59,6 +59,12 @@
                 <p>Welcome back <%out.println(user.getFirstName() + " " + user.getSecondName());%>!</p>
             </div>
         </div>
+           
+        <div class="container">
+        <!--Profile picture to be displayed here--> 
+        <h1>Profile Picture:</h1>
+        <a href="/Instagrim/Image/<%=user.getProfilePicture()%>" ><img src="/Instagrim/Thumb/<%=user.getProfilePicture()%>"></a><br/>
+        </div>
         
         <div class="container">
             
