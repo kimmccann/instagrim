@@ -30,6 +30,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.UUID;
 import javax.imageio.ImageIO;
 import static org.imgscalr.Scalr.*;
 import org.imgscalr.Scalr.Method;
@@ -85,6 +86,16 @@ public class PicModel {
         } catch (IOException ex) {
             System.out.println("Error --> " + ex);
         }
+    }
+    
+    //Method to insert a comment into the comment table.
+    public void insertPicComment(String user, UUID picId, String comment){
+        Session session = cluster.connect("instagrim");
+        PreparedStatement psInsertPicComment = session.prepare("insert into comments(user, picid, pic_added, comments) values(?,?,?,?)");
+        BoundStatement bsInsertPicComment = new BoundStatement(psInsertPicComment);
+        Date DateAdded = new Date();
+        session.execute(bsInsertPicComment.bind(user,picId,DateAdded,comment));
+        session.close();
     }
     
     //Method to insert a display picture into the userprofile table.
