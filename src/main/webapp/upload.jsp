@@ -63,8 +63,9 @@
             <form method="POST" enctype="multipart/form-data" action="Image">
                 File to upload: <input type="file" name="upfile"><br/>
                 <br/>
+                <input type="checkbox" name="profilePicCheck" value="true">I would like this picture to be my profile picture<br>
                 <input type="submit" value="Press"> to upload the file!<br>
-                <input type="checkbox" name="profilePicCheck" value="profilePic">I would like this picture to be my profile picture<br>
+ 
             </form>
         </div>
     </body>
