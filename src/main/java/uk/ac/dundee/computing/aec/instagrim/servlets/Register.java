@@ -8,7 +8,7 @@ package uk.ac.dundee.computing.aec.instagrim.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.util.UUID;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.models.User;
+import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 
 
 /**
@@ -53,6 +54,8 @@ public class Register extends HttpServlet {
         String email=request.getParameter("email");
         String dob=request.getParameter("date of birth");
         String gender=request.getParameter("gender");
+
+        UUID picID = null;
         
         //Stops crashing if fields are empty
         if (firstname.isEmpty() || surname.isEmpty() || username.isEmpty() || password.isEmpty() || email.isEmpty() || dob.isEmpty() || gender.isEmpty()){
@@ -65,7 +68,7 @@ public class Register extends HttpServlet {
                 System.out.println("This username is already taken");
                 response.sendRedirect("/Instagrim/register.jsp");
             } else {
-                us.RegisterUser(username, password, firstname, surname, email,dob,gender);
+                us.RegisterUser(username, password, firstname, surname, email,dob,gender,picID);
                 //Automatic login
              //   RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/Login");
                // rd.forward(request, response);
