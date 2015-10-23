@@ -135,6 +135,7 @@ public class Image extends HttpServlet {
             String type = part.getContentType();
             String filename = part.getSubmittedFileName();
             String checkboxValue = request.getParameter("profilePicCheck");
+            Boolean checked = Boolean.valueOf(checkboxValue);
             
             InputStream is = request.getPart(part.getName()).getInputStream();
             int i = is.available();
@@ -151,7 +152,7 @@ public class Image extends HttpServlet {
                 PicModel tm = new PicModel();
                 tm.setCluster(cluster);
                 //If box checked then the picture is to be uploaded as a profile picture
-                if(checkboxValue == "profilePic"){
+                if(checked == true){
                     Pic profilePicture = new Pic();
                     profilePicture = tm.insertDisplayPic(b, type, type, username, profilePicture);
                     UUID picId = profilePicture.getUUID();
@@ -160,6 +161,7 @@ public class Image extends HttpServlet {
                     System.out.println("Profile picture has been uploaded, hopefully");
                 }else{
                     //else just insert it into the regular picture table
+                    System.out.println("not a profile picture");
                     tm.insertPic(b, type, filename, username);
                 }
                 is.close();
