@@ -28,6 +28,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.UUID;
@@ -96,6 +97,25 @@ public class PicModel {
         Date DateAdded = new Date();
         session.execute(bsInsertPicComment.bind(user,picId,DateAdded,comment));
         session.close();
+    }
+    
+    public ArrayList<String> getPicComment(String picID){
+        Session session = cluster.connect("instagrim");
+        PreparedStatement ps = session.prepare("select * from comments where picid =?");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute(boundStatement.bind(picID));
+        ArrayList<String>commentList = new ArrayList<String>();
+        if (rs.isExhausted()){
+            System.out.println("No comment returned");
+        } else {
+            for (Row row : rs) {
+                System.out.println("Comment is found");
+                String comment = row.getString("comments");
+                commentList.add(comment);
+            }
+        }
+        return commentList;
     }
     
     //Method to insert a display picture into the userprofile table.
