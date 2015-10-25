@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -19,9 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.lib.Convertors;
 import uk.ac.dundee.computing.aec.instagrim.models.PicModel;
+import uk.ac.dundee.computing.aec.instagrim.stores.Comment;
 import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 import uk.ac.dundee.computing.aec.instagrim.stores.Profile;
@@ -34,7 +37,8 @@ import uk.ac.dundee.computing.aec.instagrim.stores.Profile;
     "/Image/*",
     "/Thumb/*",
     "/Images",
-    "/Images/*"
+    "/Images/*",
+    "/Profile"
 })
 @MultipartConfig
 
@@ -96,11 +100,19 @@ public class Image extends HttpServlet {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPicsForUser(User);
+        java.util.ArrayList<java.util.ArrayList<Comment>> commentsList = new java.util.ArrayList<java.util.ArrayList<Comment>>();
+        Iterator<Pic> iterator;
+        iterator = lsPics.iterator();
+        while (iterator.hasNext()) {
+            Pic p = (Pic) iterator.next();
+            UUID picID = p.getUUID();
+            commentsList.add(tm.getPicComments(picID));
+        }
       //  RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
         RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
         request.setAttribute("Pics", lsPics);
+        request.setAttribute("comments", commentsList);
         rd.forward(request, response);
-
     }
 
     private void DisplayImage(int type,String Image, HttpServletResponse response) throws ServletException, IOException {
