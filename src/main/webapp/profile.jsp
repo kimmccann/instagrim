@@ -71,21 +71,32 @@
             <h1>Your Pics</h1>
             <%
                 java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
+                java.util.ArrayList<java.util.ArrayList<Comment>> Comment = (java.util.ArrayList<java.util.ArrayList<Comment>>) request.getAttribute("comments");
                 if (lsPics == null) {
             %>
             <p>No Pictures found</p>
             <%
             } else {
-                Iterator<Pic> iterator;
-                iterator = lsPics.iterator();
-                while (iterator.hasNext()) {
-                    Pic p = (Pic) iterator.next();
+                    for (int i = 0; i < lsPics.size(); i++ ){
+                      Pic p = lsPics.get(i);        
+                      java.util.ArrayList<Comment> c = Comment.get(i);
             %>
                 <div class="image-spacing">
                     <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/>
-                </div><%
-                }
-                }
+                    
+                </div>
+            <%
+                    for (int j = 0; j < c.size(); j++){
+                    Comment com = c.get(j);
+            %>
+            <div class="image-spacing">
+                <p>User: <%=com.getUser()%></p>
+                <p>Comment: <%=com.getComment()%></p>
+            </div>
+            <%
+                    }
+                    }
+             }
             %>
         </div>
     </body>
