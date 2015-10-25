@@ -87,10 +87,9 @@ public class PicModel {
     //Method to insert a comment into the comment table.
     public void insertPicComment(String user, UUID picId, String comment){
         Session session = cluster.connect("instagrim");
-        PreparedStatement psInsertPicComment = session.prepare("insert into comments(user, picid, pic_added, comments) values(?,?,?,?)");
+        PreparedStatement psInsertPicComment = session.prepare("insert into comments(user, picid, comments) values(?,?,?)");
         BoundStatement bsInsertPicComment = new BoundStatement(psInsertPicComment);
-        Date DateAdded = new Date();
-        session.execute(bsInsertPicComment.bind(user,picId,DateAdded,comment));
+        session.execute(bsInsertPicComment.bind(user,picId,comment));
         session.close();
     }
     
