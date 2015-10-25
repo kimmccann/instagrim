@@ -32,6 +32,7 @@ import static org.imgscalr.Scalr.*;
 import org.imgscalr.Scalr.Method;
 
 import uk.ac.dundee.computing.aec.instagrim.lib.*;
+import uk.ac.dundee.computing.aec.instagrim.stores.Comment;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 //import uk.ac.dundee.computing.aec.stores.TweetStore;
 
@@ -93,19 +94,21 @@ public class PicModel {
         session.close();
     }
     
-    public ArrayList<String> getPicComment(String picID){
+    public ArrayList<Comment> getPicComments(UUID picID){
         Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select * from comments where picid =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
         rs = session.execute(boundStatement.bind(picID));
-        ArrayList<String>commentList = new ArrayList<String>();
+        ArrayList<Comment>commentList = new ArrayList<Comment>();
         if (rs.isExhausted()){
             System.out.println("No comment returned");
         } else {
             for (Row row : rs) {
                 System.out.println("Comment is found");
-                String comment = row.getString("comments");
+                Comment comment = new Comment();
+                comment.setComment(row.getString("comments"));
+                comment.setUser(row.getString("user"));
                 commentList.add(comment);
             }
         }
