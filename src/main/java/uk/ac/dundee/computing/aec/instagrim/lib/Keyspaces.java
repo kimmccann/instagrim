@@ -52,8 +52,8 @@ public final class Keyspaces {
                     + "     user varchar,\n"
                     + "     picid UUID,\n"
                     + "     comments varchar,\n"
-                    + "     PRIMARY KEY (picid, pic_added)\n"
-                    + " ) WITH CLUSTERING ORDER BY (pic_added desc);";
+                    + "     PRIMARY KEY (picid)\n"
+                    + " );";
             Session session = c.connect();
             try {
                 PreparedStatement statement = session
