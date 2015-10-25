@@ -150,6 +150,13 @@ public class User {
         return p;
     }
     
+    public void userDelete(String username){
+        Session session = cluster.connect("instagrim");
+        PreparedStatement ps = session.prepare("delete from userprofiles where login =?");
+        BoundStatement boundStatement = new BoundStatement(ps);
+        session.execute(boundStatement.bind(username));
+    }
+    
     //Setting a user profile picture by retrieving info from database
     /**
     public Profile getProfilePicture(Profile p, String username){
