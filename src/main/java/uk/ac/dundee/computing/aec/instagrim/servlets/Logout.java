@@ -6,6 +6,7 @@
 package uk.ac.dundee.computing.aec.instagrim.servlets;
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,8 @@ public class Logout extends HttpServlet{
          System.out.println("Session in servlet "+session);
          System.out.println("user logged out");
          //Forwards to homepage
-         response.sendRedirect("/Instagrim/index.jsp");
+         RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+         rd.forward(request, response);
      }
      
     

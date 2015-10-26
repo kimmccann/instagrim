@@ -41,8 +41,7 @@
                         <li><a href="/Instagrim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="register.jsp">Register</a></li>
-                        <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                        <li><a href="/Instagrim/Register">Register</a></li>
                     </ul>
                 </div>
             </div>

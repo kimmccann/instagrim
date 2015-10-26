@@ -42,7 +42,7 @@
                         <li><a href="/Instagrim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="upload.jsp">Upload</a></li>
+                        <li><a href="/Instagrim/Upload">Upload</a></li>
                             <%
                                 LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
                                 if (lg != null) {
@@ -52,12 +52,12 @@
 
                       <!--  <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li> -->
                         <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Profile</a></li> 
-                        <li><a href="Logout">Logout</a></li>
+                        <li><a href="/Instagrim/Logout">Logout</a></li>
                             <%}
                                     }else{
                                         %>
-                        <li><a href="register.jsp">Register</a></li>
-                        <li><a href="login.jsp">Login</a></li>
+                        <li><a href="/Instagrim/Register">Register</a></li>
+                        <li><a href="/Instagrim/Login">Login</a></li>
                         <%
                             }%>
                     </ul>
