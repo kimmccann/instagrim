@@ -7,6 +7,7 @@ package uk.ac.dundee.computing.aec.instagrim.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
+import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
  *
  * @author Kimberley
  */
-@WebServlet(name = "Comment", urlPatterns = {"/Comment"})
+@WebServlet(name = "Comment", urlPatterns = {"/Comment/*"})
 public class Comment extends HttpServlet {
         
     Cluster cluster=null;
@@ -43,8 +44,10 @@ public class Comment extends HttpServlet {
         HttpSession sessionA=request.getSession();
         LoggedIn lg1 = (LoggedIn)sessionA.getAttribute("LoggedIn");
         String userA = lg1.getUsername();
-        c.setUser(userA);
-        //insertPicComment(userA, picId, comment);
+        String id = request.getParameter("picid");
+        System.out.println(id);
+        UUID picId = UUID.fromString(id);
+        insertPicComment(userA, picId, comment);
         response.sendRedirect("/Instagrim/Images/" + userA);
     }
 
@@ -57,5 +60,9 @@ public class Comment extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void insertPicComment(String userA, UUID picId, String comment) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

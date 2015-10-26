@@ -98,7 +98,7 @@
                     }
                     UUID pic_id = p.getUUID();
             %>
-                <a href="/Instagrim/Comment">To submit a comment on this picture click here</a>
+                <a href="/Instagrim/Comment/Id=<%=p.getSUUID()%>">To submit a comment on this picture click here</a>
             <%
                     }
              }
