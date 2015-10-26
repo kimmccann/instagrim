@@ -43,7 +43,7 @@
                         <li><a href="/Instagrim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="/Instagrim/upload.jsp">Upload</a></li>
+                        <li><a href="/Instagrim/Upload">Upload</a></li>
                         <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
                     </ul>
                 </div>
