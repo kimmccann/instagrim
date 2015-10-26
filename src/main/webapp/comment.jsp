@@ -1,6 +1,6 @@
 <%-- 
-    Document   : profile
-    Created on : 01-Oct-2015, 21:01:14
+    Document   : comment
+    Created on : 26-Oct-2015, 15:34:51
     Author     : Kimberley
 --%>
 <!--imports-->
@@ -56,53 +56,19 @@
             <div class="container">
                 <h1>Instagrim</h1>
                 <p>Your world in Black and White</p>
-                <p>Welcome back <%out.println(user.getFirstName() + " " + user.getSecondName());%>!</p>
             </div>
-        </div>
-           
-        <div class="container">
-        <!--Profile picture to be displayed here--> 
-        <h1>Profile Picture:</h1>
-        <a href="/Instagrim/Image/<%=user.getProfilePicture()%>" ><img src="/Instagrim/Thumb/<%=user.getProfilePicture()%>"></a><br/>
         </div>
         
-        <div class="container">
-            
-            <h1>Your Pics</h1>
-            <%
-                java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
-                java.util.ArrayList<java.util.ArrayList<Comment>> Comment = (java.util.ArrayList<java.util.ArrayList<Comment>>) request.getAttribute("comments");
-                if (lsPics == null) {
-            %>
-            <p>No Pictures found</p>
-            <%
-            } else {
-                    for (int i = 0; i < lsPics.size(); i++ ){
-                      Pic p = lsPics.get(i);        
-                      java.util.ArrayList<Comment> c = Comment.get(i);
-            %>
-                <div class="image-spacing">
-                    <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/>
-                    <h4>Comments:</h4>
-                    
+            <div class="container">
+                <h1> Enter your comment here:</h1>
+                <div class="pad">
+                    <form method="POST" action="Comment">
+                        <div class="input-spacing">
+                            <input type="text" name="comment" placeholder="enter your comment here">
+                        </div>
+                        <input type="submit" value="Submit Comment" class="btn btn-primary btn-large">
+                    </form>
                 </div>
-            <%
-                    for (int j = 0; j < c.size(); j++){
-                    Comment com = c.get(j);
-            %>
-            <div class="image-spacing">
-                <p>User: <%=com.getUser()%></p>
-                <p>Comment: <%=com.getComment()%></p>
             </div>
-            <%
-                    }
-                    UUID pic_id = p.getUUID();
-            %>
-                <a href="/Instagrim/Comment">To submit a comment on this picture click here</a>
-            <%
-                    }
-             }
-            %>
-        </div>
     </body>
 </html>

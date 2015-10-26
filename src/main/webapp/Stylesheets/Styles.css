@@ -78,6 +78,10 @@ nav {
     width: 300px;
 }
 
+.pad {
+    padding: 20px;
+}
+
 .form-box{
     background-color: #FFF;
     padding: 20px;

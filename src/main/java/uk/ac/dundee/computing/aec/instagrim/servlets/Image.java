@@ -37,8 +37,7 @@ import uk.ac.dundee.computing.aec.instagrim.stores.Profile;
     "/Image/*",
     "/Thumb/*",
     "/Images",
-    "/Images/*",
-    "/Profile"
+    "/Images/*"
 })
 @MultipartConfig
 
@@ -137,6 +136,8 @@ public class Image extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+       
         for (Part part : request.getParts()) {
             System.out.println("Part Name " + part.getName());
 
