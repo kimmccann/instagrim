@@ -62,20 +62,20 @@ public class Register extends HttpServlet {
         
         //Stops crashing if fields are empty
         if (firstname.isEmpty() || surname.isEmpty() || username.isEmpty() || password.isEmpty() || email.isEmpty() || dob.isEmpty() || gender.isEmpty()){
-            response.sendRedirect("/Instagrim/register.jsp");
+            response.sendRedirect("/InstaKim/register.jsp");
         } else {
             User us=new User();
             us.setCluster(cluster);        
             //Checks if the username is already taken and if it is then refresh the registration page to try again
             if (us.isValidUsername(username) == true ){
                 System.out.println("This username is already taken");
-                response.sendRedirect("/Instagrim/register.jsp");
+                response.sendRedirect("/InstaKim/register.jsp");
             } else {
                 us.RegisterUser(username, password, firstname, surname, email,dob,gender,picID);
                 //Automatic login
              //   RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/Login");
                // rd.forward(request, response);
-                response.sendRedirect("/Instagrim/index.jsp");
+                response.sendRedirect("/InstaKim/index.jsp");
             }
         }
         

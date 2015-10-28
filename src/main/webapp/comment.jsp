@@ -25,7 +25,8 @@
     </head>
     <body>
         <% LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-           Profile user = (Profile) session.getAttribute("Profile");%>
+           Profile user = (Profile) session.getAttribute("Profile");
+           UUID id = (UUID) session.getAttribute("pId");%>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Responsive navbar with toggle navigation -->

@@ -12,7 +12,7 @@
         
         <!-- CSS Stylesheets for bootstrap and custom made one -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/Instagrim/Stylesheets/Styles.css" />
+        <link rel="stylesheet" type="text/css" href="/InstaKim/Stylesheets/Styles.css" />
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 

@@ -57,7 +57,7 @@ public class Login extends HttpServlet {
         
         //Stops page crashing if the user logs in without typing in a username or password
         if (username.isEmpty() || password.isEmpty()){
-            response.sendRedirect("/Instagrim/login.jsp");
+            response.sendRedirect("/InstaKim/login.jsp");
         } else {
             User us=new User();
             us.setCluster(cluster);
@@ -79,9 +79,9 @@ public class Login extends HttpServlet {
                 RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
                 rd.forward(request,response);
                 //doesn't work ->
-                response.sendRedirect("/Instagrim/profile.jsp");
+                response.sendRedirect("/InstaKim/profile.jsp");
             }else{
-                response.sendRedirect("/Instagrim/login.jsp");
+                response.sendRedirect("/InstaKim/login.jsp");
             }
         }
         

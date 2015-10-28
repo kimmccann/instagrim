@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
+import uk.ac.dundee.computing.aec.instagrim.models.PicModel;
 
 /**
  *
@@ -27,6 +28,7 @@ import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
 public class Comment extends HttpServlet {
         
     Cluster cluster=null;
+    private Object PortalUtil;
 
     public void init(ServletConfig config) throws ServletException {
         // TODO Auto-generated method stub
@@ -39,16 +41,17 @@ public class Comment extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PicModel tm = new PicModel();
+        tm.setCluster(cluster);
         String comment=request.getParameter("comment");
         uk.ac.dundee.computing.aec.instagrim.stores.Comment c = new uk.ac.dundee.computing.aec.instagrim.stores.Comment();
-        HttpSession sessionA=request.getSession();
-        LoggedIn lg1 = (LoggedIn)sessionA.getAttribute("LoggedIn");
+        HttpSession session=request.getSession();
+        LoggedIn lg1 = (LoggedIn)session.getAttribute("LoggedIn");
         String userA = lg1.getUsername();
-        String id = request.getParameter("picid");
+        UUID id = (UUID) session.getAttribute("pId");
         System.out.println(id);
-        UUID picId = UUID.fromString(id);
-        insertPicComment(userA, picId, comment);
-        response.sendRedirect("/Instagrim/Images/" + userA);
+        tm.insertPicComment(userA, id, comment);
+        response.sendRedirect("/InstaKim/Images/" + userA);
     }
 
     /**
@@ -60,9 +63,5 @@ public class Comment extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void insertPicComment(String userA, UUID picId, String comment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

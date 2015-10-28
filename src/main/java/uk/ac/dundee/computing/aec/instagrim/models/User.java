@@ -37,7 +37,7 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instaKim");
         PreparedStatement ps = session.prepare("insert into userprofiles (login,password, first_name, last_name, email, date_of_birth, gender, profilePicture) Values(?,?,?,?,?,?,?,?)");
         BoundStatement boundStatement = new BoundStatement(ps);
         session.execute( // this is where the query is executed
@@ -57,7 +57,7 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instaKim");
         PreparedStatement ps = session.prepare("select password from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -83,7 +83,7 @@ public class User {
 
     //This method checks if the username is already taken
     public boolean isValidUsername(String username){
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instaKim");
         PreparedStatement ps = session.prepare("select login from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -103,7 +103,7 @@ public class User {
     
     //This method checks if this email address has already been used to stop people setting up duplicate accounts
     public boolean isValidEmail(String email){
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instaKim");
         PreparedStatement ps = session.prepare("select email from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -123,7 +123,7 @@ public class User {
     
     //Setting up a user profile by retrieving info from database
     public Profile getProfile(Profile p, String username){
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instaKim");
         PreparedStatement ps = session.prepare("select * from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -150,31 +150,12 @@ public class User {
         return p;
     }
     
+    //Deletes a user
     public void userDelete(String username){
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instaKim");
         PreparedStatement ps = session.prepare("delete from userprofiles where login =?");
         BoundStatement boundStatement = new BoundStatement(ps);
         session.execute(boundStatement.bind(username));
     }
     
-    //Setting a user profile picture by retrieving info from database
-    /**
-    public Profile getProfilePicture(Profile p, String username){
-        Session session = cluster.connect("instagrim");
-        PreparedStatement ps = session.prepare("select * from userdisplaypic where username=?");
-        ResultSet rs = null;
-        BoundStatement boundStatement = new BoundStatement(ps);
-        rs = session.execute(boundStatement.bind(username));
-        if (rs.isExhausted()){
-            System.out.println("No profile pic returned");   
-        }else{
-            for (Row row : rs){
-                System.out.println("Profile picture found");
-                java.util.UUID profilePic = row.getUUID("picid");
-                p.setProfilePicture(profilePic);
-            }
-        }
-        return p;
-    }
-    **/
 }

@@ -64,6 +64,9 @@
         <!--Profile picture to be displayed here--> 
         <h1>Profile Picture:</h1>
         <a href="/Instagrim/Image/<%=user.getProfilePicture()%>" ><img src="/Instagrim/Thumb/<%=user.getProfilePicture()%>"></a><br/>
+        <p> User: <%=user.getFirstName() + user.getSecondName()%> </p>
+        <p> Gender: <%=user.getGender()%></p>
+        <p> Date of Birth: <%=user.getDateOfBirth()%></p>
         </div>
         
         <div class="container">
@@ -99,7 +102,10 @@
                     UUID pic_id = p.getUUID();
             %>
                 <a href="/Instagrim/Comment/Id=<%=p.getSUUID()%>">To submit a comment on this picture click here</a>
-            <%
+                <%
+                    System.out.println("prof id: " + pic_id);
+                    session.setAttribute("pId", pic_id);
+            
                     }
              }
             %>
