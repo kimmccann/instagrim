@@ -40,11 +40,11 @@
                 <!--Navbar links depending on if logged in or not -->
                 <div class="collapse navbar-collapse">
                     <ul class = "nav navbar-nav"> 
-                        <li><a href="/Instagrim">Home</a></li>
+                        <li><a href="/InstaKim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="/Instagrim/Upload">Upload</a></li>
-                        <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                        <li><a href="/InstaKim/Upload">Upload</a></li>
+                        <li><a href="/InstaKim/Images/majed">Sample Images</a></li>
                     </ul>
                 </div>
             </div>
@@ -71,7 +71,7 @@
             while (iterator.hasNext()) {
                 Pic p = (Pic) iterator.next();
         %>
-        <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
+        <a href="/InstaKim/Image/<%=p.getSUUID()%>" ><img src="/InstaKim/Thumb/<%=p.getSUUID()%>"></a><br/><%
             }
             }
         %>

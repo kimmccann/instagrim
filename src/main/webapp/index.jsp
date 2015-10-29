@@ -39,10 +39,10 @@
                 <!--Navbar links depending on if logged in or not -->
                 <div class="collapse navbar-collapse">
                     <ul class = "nav navbar-nav"> 
-                        <li><a href="/Instagrim">Home</a></li>
+                        <li><a href="/InstaKim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="/Instagrim/Upload">Upload</a></li>
+                        <li><a href="/InstaKim/Upload">Upload</a></li>
                             <%
                                 LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
                                 if (lg != null) {
@@ -50,14 +50,13 @@
                                     if (lg.getlogedin()) {
                             %>
 
-                      <!--  <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li> -->
-                        <li><a href="/Instagrim/Images/<%=lg.getUsername()%>    ">Profile</a></li> 
-                        <li><a href="/Instagrim/Logout">Logout</a></li>
+                        <li><a href="/InstaKim/Images/<%=lg.getUsername()%>    ">Profile</a></li> 
+                        <li><a href="/InstaKim/Logout">Logout</a></li>
                             <%}
                                     }else{
                                         %>
-                        <li><a href="/Instagrim/Register">Register</a></li>
-                        <li><a href="/Instagrim/Login">Login</a></li>
+                        <li><a href="/InstaKim/Register">Register</a></li>
+                        <li><a href="/InstaKim/Login">Login</a></li>
                         <%
                             }%>
                     </ul>

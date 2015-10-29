@@ -42,11 +42,10 @@
                 <!--Navbar links depending on if logged in or not -->
                 <div class="collapse navbar-collapse">
                     <ul class = "nav navbar-nav"> 
-                        <li><a href="/Instagrim">Home</a></li>
+                        <li><a href="/InstaKim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
-                        <li><a href="/Instagrim/Upload">Upload</a></li>
+                        <li><a href="/InstaKim/Upload">Upload</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +62,7 @@
         <div class="container">
         <!--Profile picture to be displayed here--> 
         <h1>Profile Picture:</h1>
-        <a href="/Instagrim/Image/<%=user.getProfilePicture()%>" ><img src="/Instagrim/Thumb/<%=user.getProfilePicture()%>"></a><br/>
+        <a href="/InstaKim/Image/<%=user.getProfilePicture()%>" ><img src="/InstaKim/Thumb/<%=user.getProfilePicture()%>"></a><br/>
         <p> User: <%=user.getFirstName() + user.getSecondName()%> </p>
         <p> Gender: <%=user.getGender()%></p>
         <p> Date of Birth: <%=user.getDateOfBirth()%></p>
@@ -85,7 +84,7 @@
                       java.util.ArrayList<Comment> c = Comment.get(i);
             %>
                 <div class="image-spacing">
-                    <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/>
+                    <a href="/InstaKim/Image/<%=p.getSUUID()%>" ><img src="/InstaKim/Thumb/<%=p.getSUUID()%>"></a><br/>
                     <h4>Comments:</h4>
                     
                 </div>
@@ -101,7 +100,7 @@
                     }
                     UUID pic_id = p.getUUID();
             %>
-                <a href="/Instagrim/Comment/Id=<%=p.getSUUID()%>">To submit a comment on this picture click here</a>
+                <a href="/InstaKim/Comment/Id=<%=p.getSUUID()%>">To submit a comment on this picture click here</a>
                 <%
                     System.out.println("prof id: " + pic_id);
                     session.setAttribute("pId", pic_id);

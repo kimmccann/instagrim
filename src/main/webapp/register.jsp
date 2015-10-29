@@ -38,10 +38,10 @@
                 <!--Navbar links depending on if logged in or not -->
                 <div class="collapse navbar-collapse">
                     <ul class = "nav navbar-nav"> 
-                        <li><a href="/Instagrim">Home</a></li>
+                        <li><a href="/InstaKim">Home</a></li>
                     </ul>
                     <ul class ="nav navbar-nav navbar-right">
-                        <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                        <li><a href="/InstaKim/Images/majed">Sample Images</a></li>
                     </ul>
                 </div>
             </div>

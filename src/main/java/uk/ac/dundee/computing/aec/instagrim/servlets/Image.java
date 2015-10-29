@@ -100,12 +100,17 @@ public class Image extends HttpServlet {
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPicsForUser(User);
         java.util.ArrayList<java.util.ArrayList<Comment>> commentsList = new java.util.ArrayList<java.util.ArrayList<Comment>>();
-        Iterator<Pic> iterator;
-        iterator = lsPics.iterator();
-        while (iterator.hasNext()) {
-            Pic p = (Pic) iterator.next();
-            UUID picID = p.getUUID();
-            commentsList.add(tm.getPicComments(picID));
+        if(lsPics == null){
+            lsPics = new java.util.LinkedList<Pic>();
+            System.out.println("No pics");
+        }else{
+            Iterator<Pic> iterator;
+            iterator = lsPics.iterator();
+            while (iterator.hasNext()) {
+                Pic p = (Pic) iterator.next();
+                UUID picID = p.getUUID();
+                commentsList.add(tm.getPicComments(picID));
+            }
         }
       //  RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
         RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
